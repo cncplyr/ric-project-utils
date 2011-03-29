@@ -130,6 +130,65 @@ public class FileHandler {
 		return images;
 	}
 
+	/** 
+	 * Loads images that match the name filter, from the current input folder.
+	 * Returned as a <code>List</code> of <code>BufferedImage</code>. Allows
+	 * skipping of images and limiting the number of returned images.
+	 * 
+	 * @param nameFilter
+	 *            The beginning of the name to find.
+	 * @param every
+	 *            e.g. 1 = load every image; 2 = every second image; 10 = every
+	 *            10th image. Will throw exception on negative number.
+	 * @param limit
+	 *            How many images to return. 0 = return all images. Will throw
+	 *            exception on negative number. If retrieving more than the
+	 *            number of images that exists, will instead get all images.
+	 * @return All images matching the name filter, up to the limit, not
+	 *         including skipped files.
+	 * @throws Exception
+	 */
+	public List<BufferedImage> loadMatchingImages(final String nameFilter, int every, int limit) throws Exception {
+		// Parameter Check
+		if (limit < 0) {
+			throw new Exception("Cannot get a negative number of images!");
+		}
+		if (every < 0) {
+			throw new Exception("Cannot get more images than exist!");
+		}
+
+		// Image IO
+		File inFolder = new File(inputFolder);
+		FilenameFilter filter = new FilenameFilter() {
+			// Our custom name filter
+			@Override
+			public boolean accept(File folder, String name) {
+				return name.startsWith(nameFilter);
+			}
+		};
+
+		// Image and Image Name storage
+		String[] imageNames = inFolder.list(filter);
+		List<BufferedImage> images = new ArrayList<BufferedImage>();
+
+		// 0 = Get all images, also can't get more images than exist
+		if ((limit == 0) || (limit > imageNames.length)) {
+			limit = imageNames.length;
+		}
+
+		// Add the images to our list
+		for (int i = 0; i < limit; i++) {
+			if (i % every == 0) {
+				images.add(loadImage(imageNames[i]));
+			}
+		}
+
+		// Return images
+		return images;
+	}
+
+
+
 	/**
 	 * Loads an image file from the input folder into a
 	 * <code>BufferedImage</code>.
