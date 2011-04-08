@@ -28,13 +28,15 @@ public class CSVHandler {
 	private String fileName = "boundingBoxes";
 
 	/**
-	 * Reads the currently selected file and returns it. Will probably fail if entries are not <code>int</code>s.
+	 * Reads the currently selected file and returns it. Will probably fail if
+	 * entries are not <code>int</code>s.
 	 * 
-	 * @return The requested file in the form of a <code>List</code> of arrays of <code>int</code>s.
-	 *         Each array represents a single row.
+	 * @return The requested file in the form of a <code>List</code> of arrays
+	 *         of <code>int</code>s. Each array represents a single row.
 	 */
 	public List<int[]> readCSVint() {
-		// TODO: Change this to read each line in turn, then add to convertedEntries, saving the creation of storedEntries?
+		// TODO: Change this to read each line in turn, then add to
+		// convertedEntries, saving the creation of storedEntries?
 		// Might be more memory efficient
 		CSVReader reader;
 		// The strings pulled from file
@@ -122,6 +124,15 @@ public class CSVHandler {
 		String[] convertedEntries = new String[size];
 		for (int i = 0; i < size; i++) {
 			convertedEntries[i] = Integer.toString(entries[i]);
+		}
+		writer.writeNext(convertedEntries);
+	}
+
+	public void writeCSVLine(List<Integer> entries) {
+		int size = entries.size();
+		String[] convertedEntries = new String[size];
+		for (int i = 0; i < size; i++) {
+			convertedEntries[i] = Integer.toString(entries.get(i));
 		}
 		writer.writeNext(convertedEntries);
 	}
