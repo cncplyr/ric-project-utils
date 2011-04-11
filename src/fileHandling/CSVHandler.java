@@ -25,7 +25,40 @@ import opencsv.CSVWriter;
 public class CSVHandler {
 	CSVWriter writer;
 	private String csvFolder = "output";
-	private String fileName = "boundingBoxes";
+	private String fileName = "metrics";
+
+
+	public List<List<Integer>> readCSVinteger(String fileName) {
+		// TODO: Change this to read each line in turn, then add to
+		// convertedEntries, saving the creation of storedEntries?
+		// Might be more memory efficient
+		CSVReader reader;
+		// The strings pulled from file
+		List<String[]> storedEntries = new ArrayList<String[]>();
+		// Each string converted to int.
+		List<List<Integer>> convertedEntries = new ArrayList<List<Integer>>();
+
+		// Read the entire file into a List.
+		try {
+			reader = new CSVReader(new FileReader(getCSVFolder() + File.separator + fileName + ".csv"));
+			storedEntries = reader.readAll();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		// The current list contains strings, so we convert them.
+		int size = storedEntries.get(0).length;
+		for (String[] row : storedEntries) {
+			List<Integer> convertedRow = new ArrayList<Integer>();
+			for (int i = 0; i < size; i++) {
+				convertedRow.add(Integer.parseInt(row[i]));
+			}
+			convertedEntries.add(convertedRow);
+		}
+		return convertedEntries;
+	}
 
 	/**
 	 * Reads the currently selected file and returns it. Will probably fail if
