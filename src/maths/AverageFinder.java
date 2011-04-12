@@ -33,6 +33,17 @@ public class AverageFinder {
 		}
 	}
 
+	public double findMeanDouble(List<Double> numbers) {
+		if (numbers.size() < 1) {
+			throw new IllegalArgumentException("Cannot find average(mean) of an empty list of numbers!");
+		}
+		double mean = 0.0f;
+		for (double number : numbers) {
+			mean += number;
+		}
+		return mean / numbers.size();
+	}
+
 	/**
 	 * Finds the mean integer.
 	 * 
