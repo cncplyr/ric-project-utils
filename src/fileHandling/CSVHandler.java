@@ -60,6 +60,36 @@ public class CSVHandler {
 		return convertedEntries;
 	}
 
+	public List<List<Double>> readCSVdouble(String fileName) {
+		CSVReader reader;
+		// The strings pulled from file
+		List<String[]> storedEntries = new ArrayList<String[]>();
+		// Each string converted to int.
+		List<List<Double>> convertedEntries = new ArrayList<List<Double>>();
+
+		// Read the entire file into a List.
+		try {
+			reader = new CSVReader(new FileReader(getCSVFolder() + File.separator + fileName + ".csv"));
+			storedEntries = reader.readAll();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		// The current list contains strings, so we convert them.
+		int size = storedEntries.get(0).length;
+		for (String[] row : storedEntries) {
+			List<Double> convertedRow = new ArrayList<Double>();
+			for (int i = 0; i < size; i++) {
+				convertedRow.add(Double.parseDouble(row[i]));
+			}
+			convertedEntries.add(convertedRow);
+		}
+		return convertedEntries;
+	}
+
+
 	/**
 	 * Reads the currently selected file and returns it. Will probably fail if
 	 * entries are not <code>int</code>s.
@@ -99,6 +129,7 @@ public class CSVHandler {
 
 		return convertedEntries;
 	}
+
 
 	/**
 	 * Reads the currently selected file and returns it.
