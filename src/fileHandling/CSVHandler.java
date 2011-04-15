@@ -78,8 +78,9 @@ public class CSVHandler {
 		}
 
 		// The current list contains strings, so we convert them.
-		int size = storedEntries.get(0).length;
+		int size = 0;
 		for (String[] row : storedEntries) {
+			size = row.length;
 			List<Double> convertedRow = new ArrayList<Double>();
 			for (int i = 0; i < size; i++) {
 				convertedRow.add(Double.parseDouble(row[i]));
