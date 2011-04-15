@@ -31,7 +31,7 @@ public class StandardDeviation {
 		double n = input.size();
 
 		for (double i : input) {
-			i += Math.pow(i - mean, 2.0d);
+			top += Math.pow(i - mean, 2.0d);
 		}
 		double SD = Math.sqrt(top / n);
 
