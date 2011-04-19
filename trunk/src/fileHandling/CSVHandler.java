@@ -210,7 +210,7 @@ public class CSVHandler {
 		return fileName;
 	}
 
-	public void setCSVFolder(String csvFolder) {
+	public void setInputFolder(String csvFolder) {
 		this.csvFolder = csvFolder;
 	}
 
