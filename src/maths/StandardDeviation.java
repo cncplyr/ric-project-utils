@@ -2,6 +2,12 @@ package maths;
 
 import java.util.List;
 
+/**
+ * 
+ * @author Richard Jenkin
+ * @version 1.0
+ *
+ */
 public class StandardDeviation {
 
 	public StandardDeviation() {

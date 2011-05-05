@@ -7,6 +7,7 @@ import java.util.List;
  * Provides methods to find different types of averages.
  * 
  * @author Richard Jenkin
+ * @version 1.0
  */
 public class AverageFinder {
 

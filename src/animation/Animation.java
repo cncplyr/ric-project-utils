@@ -8,6 +8,7 @@ import java.awt.image.BufferedImage;
  * animation a set number of times.
  * 
  * @author Richard Jenkin
+ * @version 1.0
  * 
  */
 public interface Animation {

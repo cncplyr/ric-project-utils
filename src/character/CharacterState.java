@@ -4,6 +4,7 @@ package character;
  * Enumerator for the state a player's character is in.
  * 
  * @author Richard Jenkin
+ * @version 1.0
  * 
  */
 public enum CharacterState {

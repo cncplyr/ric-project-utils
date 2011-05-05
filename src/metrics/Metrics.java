@@ -8,6 +8,8 @@ import java.util.List;
  * animations.
  * 
  * @author Richard Jenkin
+ * @version 1.0
+ * 
  */
 public class Metrics {
 	private int absStartX;
