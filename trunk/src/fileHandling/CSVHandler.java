@@ -20,6 +20,7 @@ import opencsv.CSVWriter;
  * from the openCSV 2.2 library.
  * 
  * @author Richard Jenkin
+ * @version 1.0
  * 
  */
 public class CSVHandler {
@@ -29,9 +30,6 @@ public class CSVHandler {
 
 
 	public List<List<Integer>> readCSVinteger(String fileName) {
-		// TODO: Change this to read each line in turn, then add to
-		// convertedEntries, saving the creation of storedEntries?
-		// Might be more memory efficient
 		CSVReader reader;
 		// The strings pulled from file
 		List<String[]> storedEntries = new ArrayList<String[]>();
@@ -99,9 +97,6 @@ public class CSVHandler {
 	 *         of <code>int</code>s. Each array represents a single row.
 	 */
 	public List<int[]> readCSVint() {
-		// TODO: Change this to read each line in turn, then add to
-		// convertedEntries, saving the creation of storedEntries?
-		// Might be more memory efficient
 		CSVReader reader;
 		// The strings pulled from file
 		List<String[]> storedEntries = new ArrayList<String[]>();

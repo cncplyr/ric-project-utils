@@ -12,6 +12,7 @@ import character.CharacterState;
  * well as animate.
  * 
  * @author Richard Jenkin
+ * @version 1.0
  * 
  */
 public class CharacterAnimation implements Animation {

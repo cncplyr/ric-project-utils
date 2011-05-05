@@ -1,5 +1,11 @@
 package fileHandling;
 
+/**
+ * 
+ * @author Richard Jenkin
+ * @version 1.0
+ * 
+ */
 public class FileName {
 
 	/**

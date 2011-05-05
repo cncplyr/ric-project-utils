@@ -23,6 +23,7 @@ import javax.imageio.ImageIO;
  * inputFolder/outputFolder getters and setters.
  * 
  * @author Richard Jenkin
+ * @version 1.0
  * 
  */
 public class FileHandler {
@@ -113,24 +114,16 @@ public class FileHandler {
 
 		List<BufferedImage> images = new ArrayList<BufferedImage>();
 
-		/* Solution 1 */
 		for (String eachName : inFolder.list(filter)) {
 			if (counter % getEveryXthItem == 0) {
 				images.add(loadImage(eachName));
 			}
 			counter++;
 		}
-
-		/* Solution 2 - (Slightly slower?) */
-		// File[] files = folder.listFiles(filter);
-		//
-		// for (File eachFile : files) {
-		// images.add(loadImageFromFile(eachFile));
-		// }
 		return images;
 	}
 
-	/** 
+	/**
 	 * Loads images that match the name filter, from the current input folder.
 	 * Returned as a <code>List</code> of <code>BufferedImage</code>. Allows
 	 * skipping of images and limiting the number of returned images.
